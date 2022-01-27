@@ -1,6 +1,7 @@
 if(!"data.table" %in% rownames(installed.packages())){install.packages("data.table")}
 library(shiny)
 library(data.table)
+library(ggplot2)
 
 # Importation des données sous la forme d'une data.table
 toponymes <- fread("toponymes_officiels.csv")

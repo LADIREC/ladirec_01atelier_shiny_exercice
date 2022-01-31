@@ -8,10 +8,6 @@ toponymes <- fread("toponymes_officiels.csv")
 # str(toponymes)
 # unique(toponymes$Origine_linguistique)
 
-
-choix_langues <- c("Français", "Inuktitut")
-
-
 ui <- fluidPage(
 
     # Titre de l'application
@@ -25,7 +21,10 @@ ui <- fluidPage(
                              choices = unique(toponymes$Origine_linguistique),
                              selected = c("Wendat", "Inuktitut",
                                           "Cri", "Innu",
-                                          "Algonquin", "Abénaquis"))
+                                          "Algonquin", "Abénaquis",
+                                          "Mohawk", "Micmac",
+                                          "Naskapis", "Attikamek",
+                                          "Malécite"))
         ),
 
         mainPanel(

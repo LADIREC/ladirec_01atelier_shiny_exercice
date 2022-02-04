@@ -12,10 +12,15 @@ library(ggplot2)
 
 ###################### Exercices #####################
 
-
+# Exécutez la ligne de code ci-dessous pour importer le jeu de données dans l'environnement.
 toponymes <- fread("toponymes_officiels.csv")
-# str(toponymes)
-# unique(toponymes$Origine_linguistique)
+
+# Observez la structure du jeu de données
+
+str(toponymes)
+
+# Observez le nombre de valeurs uniques des origines linguistiques
+unique(toponymes$Origine_linguistique)
 
 ### Pouvez-vous remplacer par une variable (table de données) les astérisques dans la ligne de code ci-dessous? À quoi correspond le résultat?
 # toponymes[Origine_linguistique %in% "***", .N]

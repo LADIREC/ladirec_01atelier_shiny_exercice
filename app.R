@@ -1,5 +1,10 @@
 # Les donneés utilisées dans cet exercice proviennent de https://www.donneesquebec.ca/recherche/dataset/toponymes-officiels/resource/50ed47a8-51dd-4756-81b6-c8b67a0420f1#:~:text=Comprend%20les%20d%C3%A9cisions%20de%20la,Contient%20130%20637%20lignes.
 # setwd("~/Dropbox/ShinyRomans@lireDashboard/2022AtelierShinyExercice")
+
+if(!"shiny" %in% rownames(installed.packages())){install.packages("shiny")}
+if(!"data.table" %in% rownames(installed.packages())){install.packages("data.table")}
+if(!"ggplot2" %in% rownames(installed.packages())){install.packages("ggplot2")}
+
 library(shiny)
 library(data.table)
 library(ggplot2)
@@ -12,8 +17,8 @@ toponymes <- fread("toponymes_officiels.csv")
 # str(toponymes)
 # unique(toponymes$Origine_linguistique)
 
-### Pouvez-vous remplacer par une valeur de la table de données les astérisques dans la ligne de code ci-dessous? À quoi correspond le résultat?
-# toponymes[Origine_linguistique == "***", .N]
+### Pouvez-vous remplacer par une variable (table de données) les astérisques dans la ligne de code ci-dessous? À quoi correspond le résultat?
+# toponymes[Origine_linguistique %in% "***", .N]
 
 ### Indiquez à nouveau une valeur en remplacement des astérisques. Que se passe-t-il lorsque vous exécutez le code?
 # x <- toponymes[Origine_linguistique %in% "***"]

@@ -1,5 +1,5 @@
 # Les donneés utilisées dans cet exercice proviennent de https://www.donneesquebec.ca/recherche/dataset/toponymes-officiels/resource/50ed47a8-51dd-4756-81b6-c8b67a0420f1#:~:text=Comprend%20les%20d%C3%A9cisions%20de%20la,Contient%20130%20637%20lignes.
-
+# setwd("~/Dropbox/ShinyRomans@lireDashboard/2022AtelierShinyExercice")
 library(shiny)
 library(data.table)
 library(ggplot2)
@@ -8,7 +8,7 @@ library(ggplot2)
 ###################### Exercice #####################
 ### supprimez les croisillons des lignes de codes ci-dessous, exécutez ces lignes et observez le résultat.
 
-# toponymes <- fread("toponymes_officiels.csv")
+toponymes <- fread("toponymes_officiels.csv")
 # str(toponymes)
 # unique(toponymes$Origine_linguistique)
 
@@ -27,55 +27,37 @@ library(ggplot2)
 
 ui <- fluidPage(
 
-    # titlePanel("Toponymie officielle du Québec"),
-    # 
-    # sidebarLayout(
-    #     sidebarPanel(
-    #       checkboxGroupInput(inputId = "choix_langues",
-    #                          label = "Langue(s):",
-    #                          choices = unique(toponymes$Origine_linguistique),
-    #                          selected = c("Wendat", "Inuktitut",
-    #                                       "Cri", "Innu",
-    #                                       "Algonquin", "Abénaquis",
-    #                                       "Mohawk", "Micmac",
-    #                                       "Naskapis", "Attikamek",
-    #                                       "Malécite"))
-    #     ),
-    # 
-    #     mainPanel(
-    #        plotOutput("distPlot")
-    #     )
-    # )    titlePanel("Toponymie officielle du Québec"),
+    titlePanel("Toponymie officielle du Québec"),
 
     sidebarLayout(
-    #     sidebarPanel(
-    #       checkboxGroupInput(inputId = "choix_langues",
-    #                          label = "Langue(s):",
-    #                          choices = unique(toponymes$Origine_linguistique),
-    #                          selected = c("Wendat", "Inuktitut",
-    #                                       "Cri", "Innu",
-    #                                       "Algonquin", "Abénaquis",
-    #                                       "Mohawk", "Micmac",
-    #                                       "Naskapis", "Attikamek",
-    #                                       "Malécite"))
-    #     ),
-    # 
-    #     mainPanel(
-    #        plotOutput("distPlot")
-    #     )
-    # )
+        sidebarPanel(
+          checkboxGroupInput(inputId = "choix_langues",
+                             label = "Langue(s):",
+                             choices = unique(toponymes$Origine_linguistique),
+                             selected = c("Wendat", "Inuktitut",
+                                          "Cri", "Innu",
+                                          "Algonquin", "Abénaquis",
+                                          "Mohawk", "Micmac",
+                                          "Naskapis", "Attikamek",
+                                          "Malécite"))
+        ),
+
+        mainPanel(
+           plotOutput("distPlot")
+        )
+    )
 )
 
 # Logique des opérations qui se font en arrière-plan
 server <- function(input, output, session) {
 
-    # output$distPlot <- renderPlot({
-    #   x <- toponymes[Origine_linguistique %in% input$choix_langues]
-    # 
-    #   ggplot(x, aes(x=Origine_linguistique))+
-    #     geom_bar()+
-    #     coord_flip()
-    # })
+    output$distPlot <- renderPlot({
+      x <- toponymes[Origine_linguistique %in% input$choix_langues]
+
+      ggplot(x, aes(x=Origine_linguistique))+
+        geom_bar()+
+        coord_flip()
+    })
 }
 
 # Exécution de l'application

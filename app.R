@@ -1,48 +1,81 @@
-if(!"data.table" %in% rownames(installed.packages())){install.packages("data.table")}
+# Les donneés utilisées dans cet exercice proviennent de https://www.donneesquebec.ca/recherche/dataset/toponymes-officiels/resource/50ed47a8-51dd-4756-81b6-c8b67a0420f1#:~:text=Comprend%20les%20d%C3%A9cisions%20de%20la,Contient%20130%20637%20lignes.
+
 library(shiny)
 library(data.table)
 library(ggplot2)
 
-# Importation des données sous la forme d'une data.table
-toponymes <- fread("toponymes_officiels.csv")
+
+###################### Exercice #####################
+### supprimez les croisillons des lignes de codes ci-dessous, exécutez ces lignes et observez le résultat.
+
+# toponymes <- fread("toponymes_officiels.csv")
 # str(toponymes)
 # unique(toponymes$Origine_linguistique)
 
+### Pouvez-vous remplacer par une valeur de la table de données les astérisques dans la ligne de code ci-dessous? À quoi correspond le résultat?
+# toponymes[Origine_linguistique == "***", .N]
+
+### Indiquez à nouveau une valeur en remplacement des astérisques. Que se passe-t-il lorsque vous exécutez le code?
+# x <- toponymes[Origine_linguistique %in% "***"]
+
+### Si `x`est l'objet produit par la commande ci-dessus, que pourrait produire la commande ci-dessous, où `x`est fourni en entrée? 
+# ggplot(x, aes(x=Origine_linguistique))+
+#   geom_bar()+
+#   coord_flip()
+
+### Supprimez les croisillons en veillant à interroger la signification de chaque ligne de commande.
+
 ui <- fluidPage(
 
-    # Titre de l'application
-    titlePanel("Toponymie officielle du Québec"),
+    # titlePanel("Toponymie officielle du Québec"),
+    # 
+    # sidebarLayout(
+    #     sidebarPanel(
+    #       checkboxGroupInput(inputId = "choix_langues",
+    #                          label = "Langue(s):",
+    #                          choices = unique(toponymes$Origine_linguistique),
+    #                          selected = c("Wendat", "Inuktitut",
+    #                                       "Cri", "Innu",
+    #                                       "Algonquin", "Abénaquis",
+    #                                       "Mohawk", "Micmac",
+    #                                       "Naskapis", "Attikamek",
+    #                                       "Malécite"))
+    #     ),
+    # 
+    #     mainPanel(
+    #        plotOutput("distPlot")
+    #     )
+    # )    titlePanel("Toponymie officielle du Québec"),
 
-    # Bloc latéral où se fera le choix des langues 
     sidebarLayout(
-        sidebarPanel(
-          checkboxGroupInput(inputId = "choix_langues",
-                             label = "Langue(s):",
-                             choices = unique(toponymes$Origine_linguistique),
-                             selected = c("Wendat", "Inuktitut",
-                                          "Cri", "Innu",
-                                          "Algonquin", "Abénaquis",
-                                          "Mohawk", "Micmac",
-                                          "Naskapis", "Attikamek",
-                                          "Malécite"))
-        ),
-
-        mainPanel(
-           plotOutput("distPlot")
-        )
-    )
+    #     sidebarPanel(
+    #       checkboxGroupInput(inputId = "choix_langues",
+    #                          label = "Langue(s):",
+    #                          choices = unique(toponymes$Origine_linguistique),
+    #                          selected = c("Wendat", "Inuktitut",
+    #                                       "Cri", "Innu",
+    #                                       "Algonquin", "Abénaquis",
+    #                                       "Mohawk", "Micmac",
+    #                                       "Naskapis", "Attikamek",
+    #                                       "Malécite"))
+    #     ),
+    # 
+    #     mainPanel(
+    #        plotOutput("distPlot")
+    #     )
+    # )
 )
 
 # Logique des opérations qui se font en arrière-plan
 server <- function(input, output, session) {
 
-    output$distPlot <- renderPlot({
-      x <- toponymes[Origine_linguistique %in% input$choix_langues]
-
-      ggplot(x, aes(x=Origine_linguistique))+
-        geom_bar()+
-        coord_flip()
-    })
+    # output$distPlot <- renderPlot({
+    #   x <- toponymes[Origine_linguistique %in% input$choix_langues]
+    # 
+    #   ggplot(x, aes(x=Origine_linguistique))+
+    #     geom_bar()+
+    #     coord_flip()
+    # })
 }
 
 # Exécution de l'application

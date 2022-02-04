@@ -10,8 +10,8 @@ library(data.table)
 library(ggplot2)
 
 
-###################### Exercice #####################
-### supprimez les croisillons des lignes de codes ci-dessous, exécutez ces lignes et observez le résultat.
+###################### Exercices #####################
+
 
 toponymes <- fread("toponymes_officiels.csv")
 # str(toponymes)

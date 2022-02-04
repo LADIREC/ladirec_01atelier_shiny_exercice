@@ -12,15 +12,14 @@ library(ggplot2)
 
 ###################### Exercices #####################
 
-# Exécutez la ligne de code ci-dessous pour importer le jeu de données dans l'environnement.
-toponymes <- fread("toponymes_officiels.csv")
+### Exécutez la ligne de code ci-dessous pour importer le jeu de données dans l'environnement.
+# toponymes <- fread("toponymes_officiels.csv")
 
-# Observez la structure du jeu de données
+### Observez la structure du jeu de données
+# str(toponymes)
 
-str(toponymes)
-
-# Observez le nombre de valeurs uniques des origines linguistiques
-unique(toponymes$Origine_linguistique)
+### Observez le nombre de valeurs uniques des origines linguistiques
+# unique(toponymes$Origine_linguistique)
 
 ### Pouvez-vous remplacer par une variable (table de données) les astérisques dans la ligne de code ci-dessous? À quoi correspond le résultat?
 # toponymes[Origine_linguistique %in% "***", .N]
@@ -33,7 +32,7 @@ unique(toponymes$Origine_linguistique)
 #   geom_bar()+
 #   coord_flip()
 
-### Exécuter l'application ("Run App") et divisez votre fenêtre de travail en deux. D'un côté, placez l'application et, de l'autre observez le code ci-dessous.
+### Exécutez l'application ("Run App") et divisez votre fenêtre de travail en deux. D'un côté, placez l'application et, de l'autre observez le code ci-dessous.
 ### Pouvez-vous associer les blocs de code de l'objet `ui` à des éléments observables de l'application?
 ### Si, au lieu de l'origine linguistique, vous souhaitiez que l'application retrace la désignation du territoire associé à un toponyme, quels ajustements au code devraient être faits?
 

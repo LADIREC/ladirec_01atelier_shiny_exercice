@@ -28,7 +28,9 @@ toponymes <- fread("toponymes_officiels.csv")
 #   geom_bar()+
 #   coord_flip()
 
-### Supprimez les croisillons en veillant à interroger la signification de chaque ligne de commande.
+### Exécuter l'application ("Run App") et divisez votre fenêtre de travail en deux. D'un côté, placez l'application et, de l'autre observez le code ci-dessous.
+### Pouvez-vous associer les blocs de code de l'objet `ui` à des éléments observables de l'application?
+### Si, au lieu de l'origine linguistique, vous souhaitiez que l'application retrace la désignation du territoire associé à un toponyme, quels ajustements au code devraient être faits?
 
 ui <- fluidPage(
 
